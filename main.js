@@ -9,7 +9,6 @@ var virtualbox = require('virtualbox');
 virtualbox.start("NovoWorx", false, function start_callback(error) 
 
 {
-  //
   if (error) throw error;
   console.log("Virtual Machine has started WITH A GUI!");
   

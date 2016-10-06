@@ -15,7 +15,7 @@ var $body = document.body,
 		animatestep = 0,
 		toend = false,
 
-		pi2 = Math.PI*2,
+		pi2 = Math.PI*2	,
 
 		group = new THREE.Group(),
 		mesh, ringcover, ring,
@@ -79,10 +79,12 @@ var $body = document.body,
 	renderer = new THREE.WebGLRenderer({
 		antialias: true
 	});
+	var renderer = new THREE.WebGLRenderer( { alpha: true } );
 	renderer.setPixelRatio(window.devicePixelRatio);
 	renderer.setSize(canvassize, canvassize);
-	renderer.setClearColor('#99ffff');
-
+	//renderer.setClearColor('#99ffff');
+	renderer.setClearColor( 0x000000, 0 );
+	
 	$wrap.appendChild(renderer.domElement);
 
 	$body.addEventListener('mousedown', start, false);
