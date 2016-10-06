@@ -1,0 +1,6 @@
+@my-color: #38f986;
+
+
+.box {
+  background-color: @my-color;
+}

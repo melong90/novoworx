@@ -1,0 +1,37 @@
+// electron main
+console.log(process.versions);
+
+const {app} = require('electron')
+const {BrowserWindow} =require('electron')
+
+app.on('ready', function () {
+    const {ipcMain} = require('electron')
+    ipcMain.on('console', function (ev) {
+        var args = [].slice.call(arguments, 1)
+        var r = console.log.apply(console, args)
+        ev.returnValue = [r]
+    });
+    ipcMain.on('app', function (ev, msg) {
+        var args = [].slice.call(arguments, 2)
+        ev.returnValue = [app[msg].apply(app, args)]
+    });
+    const {BrowserWindow} = require('electron')
+    let window = new BrowserWindow({show: false})
+    window.loadURL(`file://" + __dirname + "/app.html`);
+    window.webContents.once('did-finish-load', function () {
+        const {BrowserWindow}=require('electron')
+        const {http} = require('electron')
+        const {crypto} = require('electron')
+        let server = http.createServer(function (req, res) {
+            const port = crypto.randomBytes(16).toString('hex')
+            ipcMain.once(port, function (ev, status, head, body) {
+                //console.log(status, head, body);
+                res.writeHead(status, head)
+                res.end(body)
+            });
+            window.webContents.send('request', req, port)
+        });
+        server.listen(8000)
+        console.log('http://localhost:8000/')
+    });
+});

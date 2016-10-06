@@ -1,0 +1,4 @@
+#!/bin/bash
+# My first script
+
+VBoxManage startvm NovoWorx_latest_deepa --type headless

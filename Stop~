@@ -1,0 +1,4 @@
+#!/bin/bash
+# My first script
+
+VBoxManage controlvm NovoWorx_latest_deepa poweroff
