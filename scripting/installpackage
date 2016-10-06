@@ -1,0 +1,3 @@
+
+VBoxManage import ~/Downloads/NovoWorx1.0a.ova
+sudo dpkg -i ~/madd/intern/NovoWorx_1.0.0_amd64.deb && sudo apt-get install -f

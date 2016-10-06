@@ -1,0 +1,11 @@
+read -r -p "Do you wish to download VirtualBox? [y/N] " response
+case $response in
+    [yY][eE][sS]|[yY]) 
+        printf "\nDownloading...\n\n"
+	
+        ;;
+    *)
+        printf "\nYou need VirtualBox to run the progrom\n\n"
+        ;;
+esac
+

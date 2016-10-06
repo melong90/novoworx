@@ -1,0 +1,10 @@
+read -r -p "Do you wish to download OVA file? [y/N] " response
+case $response in
+    [yY][eE][sS]|[yY]) 
+        printf "\nDownloading...\n\n"
+	wget "https://s3.amazonaws.com/novoworx-repository/Releases/NovoWorx1.0a/novoWorxV1.0.ova"
+        ;;
+    *)
+        printf "\nYou need OVA file to run the progrom\n\n"
+        ;;
+esac

@@ -1,0 +1,24 @@
+read -r -p "Do you wish to download VirtualBox? [y/N] " response
+case $response in
+    [yY][eE][sS]|[yY]) 
+        printf "\nDownloading...\n\n"
+	
+        ;;
+    *)
+        printf "\nYou need VirtualBox to run the progrom\n\n"
+        ;;
+esac
+
+read -r -p "Do you wish to download OVA file? [y/N] " response
+case $response in
+    [yY][eE][sS]|[yY]) 
+        printf "\nDownloading...\n\n"
+	wget "https://s3.amazonaws.com/novoworx-repository/Releases/NovoWorx1.0a/novoWorxV1.0.ova"
+        ;;
+    *)
+        printf "\nYou will need OVA file to run the progrom\n\n"
+        ;;
+esac
+
+VBoxManage import ~/Downloads/NovoWorx1.0a.ova
+sudo dpkg -i ~/madd/intern/NovoWorx_1.0.0_amd64.deb && sudo apt-get install -f
